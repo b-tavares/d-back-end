@@ -5,4 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\ProductController;
 
-Route::post('login', [ApiController::class, 'login']);
+Route::group([
+    'middleware' => 'jwt.verify',
+    'prefix' => 'auth'
+], function ()
+{
+    Route::post('login', [ApiController::class, 'login']);
+}    
+);
