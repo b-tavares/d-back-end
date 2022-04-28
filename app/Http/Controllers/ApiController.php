@@ -11,7 +11,21 @@ use Illuminate\Support\Facades\Validator;
 
 class ApiController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
 
+    public function register(Request $request)
+    {
+        $user = new User;
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+
+        $user->save();
+    }
 
     public function login(Request $request)
     {
@@ -22,6 +36,13 @@ class ApiController extends Controller
         }
 
         return $this->respondWithToken($token);
+    }
+
+    public function logout()
+    {
+        auth('api')->logout();
+
+        return response()->json(['message' => 'Successfully logged out']);
     }
 
     protected function respondWithToken($token)
