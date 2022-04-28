@@ -19,12 +19,13 @@ class CreateAdressesTable extends Migration
             $table->string('street');
             $table->string('number');
             $table->string('district');
+            $table->string('city');
             $table->string('state');
             $table->integer('zipcode');
             $table->timestamps();
 
-            //$table->integer('client_id')->unsigned();          
-            //$table->foreign('client_id')->references('id')->on('clients');
+            $table->unsignedBigInteger('client_id');          
+            $table->foreign('client_id')->references('id')->on('clients');
         });
     }   
 

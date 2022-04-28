@@ -22,6 +22,9 @@ class CreateSalesTable extends Migration
             $table->integer('price');
             $table->integer('total_price');
             $table->string('sale_date');
+
+            $table->unsignedBigInteger('client_id');          
+            $table->foreign('client_id')->references('id')->on('clients');
         });
     }
 
