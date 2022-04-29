@@ -23,4 +23,3 @@ class Adress extends Model
         return $this->belongsTo('App\Client', 'foreign_key');
     }
 }
-

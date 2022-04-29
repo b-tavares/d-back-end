@@ -20,15 +20,11 @@ class CreateProductsTable extends Migration
             $table->string('publisher');
             $table->integer('year');
             $table->string('description');
-            $table->string('sku');
+            $table->string('sku')->unique();
             $table->integer('price');
             $table->integer('quantity');
             $table->timestamps();
-
-            //$table->Integer('client_id');
-            //$table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
         });
-
     }
 
     /**

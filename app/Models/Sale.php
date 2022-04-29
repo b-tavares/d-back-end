@@ -21,4 +21,9 @@ class Sale extends Model
     {
         return $this->belongsTo('App\Client', 'foreign_key');
     }
+
+    public function product()
+    {
+        return $this->belongsTo('App\Product', 'foreign_key');
+    }
 }
