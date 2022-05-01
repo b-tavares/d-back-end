@@ -81,7 +81,12 @@ php artisan serve
     |-----------------|------------|
     | api/auth/logout | POST       | 
 
-### Clientes
+- ### Clientes
+    <br>
+    #### **/clients** _listagem de todos os clientes_
+    | Rota | Método |
+    |---|---|
+    | /auth/clients | POST |
 
 ### Endereços
 
