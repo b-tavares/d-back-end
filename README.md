@@ -65,14 +65,17 @@ php artisan serve
 
 ### Usuários
 
-#### SignUp: Criação de conta
+    #### SignUp: Criação de conta
 
 
 
+### Clientes
 
+### Endereços
 
+### Produtos
 
-
+### Vendas
 
 
 ## Dificuldades encontradas
