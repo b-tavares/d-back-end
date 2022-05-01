@@ -65,11 +65,11 @@ php artisan serve
 
 ### Usuários
 
-    - #### **/signup** 
-    _criação de conta_
-    | **Rota**        | **Método** | **Chaves**            |
-    |-----------------|------------|-----------------------|
-    | api/auth/signup | POST       | Name; email; password |
+   #### **/signup** 
+   _criação de conta_
+   | **Rota**        | **Método** | **Chaves**            |
+   |-----------------|------------|-----------------------|
+   | api/auth/signup | POST       | Name; email; password |
 
 
 #### **/login** _acesso à conta_
