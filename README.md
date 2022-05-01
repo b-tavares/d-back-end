@@ -21,13 +21,12 @@ git clone https://github.com/b-tavares/desafio-back-end.git
 ```
 composer install
 ```
-
 O autoload do Composer pode ser atualizado pelo código:
     ```
     composer dumpautoload
     ```
     
-- Pacote JWT Auth [(documentação)](https://jwt-auth.readthedocs.io/en/develop/).
+- Pacote JWT Auth:
     - Instalação:
     ```
     composer require tymon/jwt-auth
@@ -44,10 +43,10 @@ O autoload do Composer pode ser atualizado pelo código:
 - Configure o banco de dados da aplicação através do arquivo .env:
 ```
 DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
+DB_HOST=
 DB_PORT=3306
 DB_DATABASE=nome-bancodedados
-DB_USERNAME=root
+DB_USERNAME=
 DB_PASSWORD=
 ```
 
@@ -61,7 +60,6 @@ php artisan migrate
 php artisan serve
 ```
 
-## Rotas
 ## Rotas
 ### Usuários
 ___
@@ -82,21 +80,20 @@ Sair da conta.
 | auth/login | POST | Email; password. |
 | auth/logout | POST |  |
 
-
 ### Clientes
 ___
 > post: **/clients**
 >
-Listagem de todos/as os/as clientes cadastrados, contendo apenas dados principais. 
+Listagem de todos/as os/as clientes cadastrados, contendo apenas dados principais, ordenados pelo ID. 
 > post: **/client/new**
 > 
 Cadastro de novos/as clientes;
 > post: **/client/{id}**
 > 
-Visualizar dados completos do cliente, assim como vendas recentes. Possível filtrar as vendas por mês && ano.
+Visualizar dados completos do cliente, incluindo endereço, assim como vendas ordenadas pela mais recente. Possível filtrar as vendas por mês && ano.
 > put: **/client/edit/{id}**
 > 
-Editar dados de cliente já cadastrado.
+Editar dados principais de cliente já cadastrado.
 > post: **/client/delete/{id}**
 > 
  Deletar dados de cliente cadastrado, incluindo endereço e vendas.
@@ -129,11 +126,11 @@ ___
 
 > post: **/products**
 >
-Listagem de todos os produtos cadastrados, contendo apenas dados principais.
+Listagem de todos os produtos cadastrados ordenados alfabeticamente, contendo apenas dados principais.
 
 > post: **/products/new**
 > 
-Cadastro de novos produtos;
+Cadastro de novos produtos (livros).
 > post: **/products/{id}**
 > 
 Visualizar informações completas do produto cadastrado.
@@ -142,7 +139,7 @@ Visualizar informações completas do produto cadastrado.
 Editar informações de produto já cadastrado.
 > put: **/products/erase/{id}**
 > 
-Deletar (*soft delete*) produto cadastrado.
+Exclusão lógica (*soft delete*) de produto cadastrado.
 > put: **/products/restore/{id}**
 > 
 Restaurar produto que foi deletado com *soft delete*.
@@ -171,3 +168,5 @@ Cadastro de nova venda de um produto a um cliente. Colunas de preço e preço to
 | auth/sale/new | POST | client_id; product_id; quantity. |
 
 ## Dificuldades encontradas
+- Configuração JWT para autenticação e middleware. Resolvido através da [(documentação)](https://jwt-auth.readthedocs.io/en/develop/quick-start/) e pesquisa em fóruns.
+- Filtro de pesquisa por data e hora de vendas, dentro da visualização individual do cliente. Resolvido através da documentação do [Laravel](https://laravel.com/docs/7.x/queries#where-clauses) e [Eloquent](https://laravel-docs-pt-br.readthedocs.io/en/latest/eloquent/#escopo-de-queryconsulta).
