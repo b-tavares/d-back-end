@@ -165,12 +165,9 @@ ___
 
 > post: **/sales/new**
 > 
-Cadastro de nova venda de um produto a um cliente.
+Cadastro de nova venda de um produto a um cliente. Colunas de preço e preço total são preenchidos automaticamente a partir do *product_id*.
 | **Rota** | **Método** | **Chaves** |
 |---|---|---|
-| auth/sale/new | POST | client_id; product_id[^1]; quantity. |
-
-[^1]Colunas de preço e preço total são preenchidos automaticamente a partir do *product_id*.
-
+| auth/sale/new | POST | client_id; product_id; quantity. |
 
 ## Dificuldades encontradas
