@@ -62,6 +62,7 @@ php artisan serve
 ```
 
 ## Rotas
+## Rotas
 ### Usuários
 ___
 > post: **/signup**
@@ -74,7 +75,13 @@ Acesso à conta.
 > post: **/logout**
 > 
 Sair da conta.
-<br>
+
+| **Rota** | **Método** | **Chaves** |
+|---|---|---|
+| auth/signup | POST | Nome; email; password. |
+| auth/login | POST | Email; password. |
+| auth/logout | POST |  |
+
 
 ### Clientes
 ___
@@ -93,7 +100,14 @@ Editar dados de cliente já cadastrado.
 > post: **/client/delete/{id}**
 > 
  Deletar dados de cliente cadastrado, incluindo endereço e vendas.
- <br>
+ 
+| **Rota** | **Método** | **Chaves** |
+|---|---|---|
+| auth/clients | POST |  |
+| auth/client/new | POST | Name; CPF; phone; email. |
+| auth/client/{id} | POST |  |
+| auth/client/edit/{id} | PUT | Name; phone; email. |
+| auth/client/delete/{id} | POST |  |
 
 ### Endereços
 ___
@@ -104,10 +118,15 @@ Cadastro novo endereço vinculado a cliente já existente.
 > put: **/adress/edit/{id}**
 > 
 Editar endereço de cliente já cadastrado.
-<br>
+
+| **Rota** | **Método** | **Chaves** |
+|---|---|---|
+| auth/adress/new | POST | Street; number; district; city; state; zipcode; client_id.  |
+| auth/adress/edit/{id} | PUT | Street; number; district; city; state; zipcode. |
 
 ### Produtos
 ___
+
 > post: **/products**
 >
 Listagem de todos os produtos cadastrados, contendo apenas dados principais.
@@ -130,14 +149,28 @@ Restaurar produto que foi deletado com *soft delete*.
 > post: **/products/delete/{id}**
 > 
  Deletar definitivamente produto cadastrado.
- <br>
+
+| **Rota** | **Método** | **Chaves** |
+|---|---|---|
+| auth/products | POST | Name; author; publisher; year; description; sku; price; quantity. |
+| auth/product/new | POST |  |
+| auth/product/{id} | POST |  |
+| auth/product/edit/{id} | PUT | Name; author; publisher; year; description; sku; price; quantity. |
+| auth/product/erase/{id} | POST |  |
+| auth/product/restore/{id} | POST |  |
+| auth/product/delete/{id} | POST |  |
+
  ### Vendas
 ___
 
 > post: **/sales/new**
 > 
 Cadastro de nova venda de um produto a um cliente.
-<br>
+| **Rota** | **Método** | **Chaves** |
+|---|---|---|
+| auth/sale/new | POST | client_id; product_id[^1]; quantity. |
+
+[^1]Colunas de preço e preço total são preenchidos automaticamente a partir do *product_id*.
 
 
 ## Dificuldades encontradas
