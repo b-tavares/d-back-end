@@ -21,7 +21,8 @@ git clone https://github.com/b-tavares/desafio-back-end.git
 ```
 composer install
 ```
-    - O autoload do Composer pode ser atualizado pelo código:
+
+O autoload do Composer pode ser atualizado pelo código:
     ```
     composer dumpautoload
     ```
