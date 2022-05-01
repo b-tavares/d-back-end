@@ -22,7 +22,7 @@ class ClientController extends Controller
         try{
             $client = new Client;
 
-            $client->name = $request->name;//tentar colocar igual ao de uodate com ' ' e =>
+            $client->name = $request->name;
             $client->cpf = $request->cpf;
             $client->phone = $request->phone;
             $client->email = $request->email;
@@ -36,20 +36,23 @@ class ClientController extends Controller
         } 
     }
 
-    public function show($id) 
+    public function show(Request $request, $id) 
     {
         $client = Client::with('adress')->where('id', $id)->get();
 
-        if($request->filled('year', 'month')) 
+        if($request->filled('year', 'month'))
         {
             $salesFilter = Sale::where('client_id', $id)
             ->whereYear('created_at', $request->year)
             ->whereMonth('created_at', $request->month)
+            ->orderBy('created_at', 'DESC')
             ->get(); 
 
             return response()->json([$client, $salesFilter]);
         } else {
-            $sales = Sale::where('client_id', $id)->get();
+            $sales = Sale::where('client_id', $id)
+            ->orderBy('created_at', 'DESC')
+            ->get();
         
         return response()->json([$client, $sales]);
         }

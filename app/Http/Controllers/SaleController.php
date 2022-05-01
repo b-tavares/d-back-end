@@ -10,13 +10,6 @@ use App\Models\Client;
 
 class SaleController extends Controller
 {
-    public function index()
-    {
-        $sales = Sale::orderBy('created_at')->get();
-        return response()->json($sales);
-    }
-
-
     public function store(Request $request)
     {
         try{         
@@ -36,16 +29,4 @@ class SaleController extends Controller
             return response()->json(['message' => 'Register error']);
         }
     }
-
-    /*public function destroy($id) 
-    {
-        try {
-            $sale = Sale::find($id)->delete();
-
-            return response()->json(['message' => 'Successfully deleted']);
-        } catch (Exception $e){
-
-            return response()->json(['message' => 'Delete error']);
-        }  
-    }*/
 }

@@ -22,6 +22,6 @@ class Sale extends Model
 
     public function product()
     {
-        return $this->belongsTo('App\Models\Product', 'client_id');//ou id?
+        return $this->belongsTo('App\Models\Product', 'client_id');
     }
 }

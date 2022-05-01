@@ -23,6 +23,6 @@ class Client extends Model
 
     public function sale()
     {
-        return $this->hasMany('App\Models\Sale', 'client_id')->orderBy('created_at', 'DESC');
+        return $this->hasMany('App\Models\Sale', 'client_id');
     }
 }

@@ -9,7 +9,7 @@ class ProductController extends Controller
 {   
     public function index(){
 
-        $products = Product::orderBy('author')->get(['name', 'author', 'quantity', 'sku']);
+        $products = Product::orderBy('name')->get(['name', 'author', 'quantity', 'sku']);
         return response()->json($products);
     }
 

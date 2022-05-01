@@ -7,19 +7,13 @@ use App\Models\Adress;
 use App\Models\Client;
 
 class AdressController extends Controller
-{
-    public function index()
-    {
-        $adresss = Adress::orderBy('id')->get();
-        return response()->json($adresss);
-    }
-    
+{   
     public function store(Request $request)
     {
         try{
             $adress = new Adress;
 
-            $adress->street = $request->street;//tentar colocar igual ao de uodate com ' ' e =>
+            $adress->street = $request->street;
             $adress->number = $request->number;
             $adress->district = $request->district;
             $adress->city = $request->city;
@@ -34,13 +28,6 @@ class AdressController extends Controller
 
             return response()->json(['message' => 'Register error']);
         } 
-    }
-
-    public function show(Adress $id) 
-    {
-        $adress = Adress::find($id);
-
-        return response()->json($adress);
     }
 
     public function update(Request $request, $id)
@@ -61,16 +48,4 @@ class AdressController extends Controller
             return response()->json(['message' => 'Update error']);
         }     
     }
-
-    /*public function destroy($id) 
-    {
-        try {
-            $adress = Adress::find($id)->delete();
-
-            return response()->json(['message' => 'Successfully deleted']);
-        } catch (Exception $e){
-
-            return response()->json(['message' => 'Delete error']);
-        }  
-    }*/
 }

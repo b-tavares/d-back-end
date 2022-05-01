@@ -26,7 +26,7 @@ class ApiController extends Controller
 
         $user->save();
 
-        //return response()->json(['message' => 'Successfully signed up!']);
+        return response()->json(['message' => 'Successfully signed up!']);
     }
 
     public function login(Request $request)
