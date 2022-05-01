@@ -36,7 +36,7 @@ O autoload do Composer pode ser atualizado pelo código:
     ```
     php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
     ```
-    - Gerar a chave JWT:
+    - Chave JWT:
     ```
     php artisan jwt:secret
     ```
@@ -62,5 +62,17 @@ php artisan serve
 ```
 
 ## Rotas
+
+### Usuários
+
+#### SignUp: Criação de conta
+
+
+
+
+
+
+
+
 
 ## Dificuldades encontradas
