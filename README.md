@@ -63,7 +63,7 @@ php artisan serve
 ## Rotas
 ### Usuários
 ___
-> **/signup**
+> post: **/signup**
 > 
 Criação de conta. 
 > post: **/login**
