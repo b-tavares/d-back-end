@@ -62,37 +62,82 @@ php artisan serve
 ```
 
 ## Rotas
+### Usuários
+___
+> post: **/signup**
+> 
+Criação de conta. 
+> post: **/login**
+> 
+Acesso à conta.
 
-- ### Usuários
+> post: **/logout**
+> 
+Sair da conta.
+<br>
 
-    #### **/signup** _criação de conta_
-    | **Rota**        | **Método** | **Chaves**            |
-    |-----------------|------------|-----------------------|
-    | api/auth/signup | POST       | Name; email; password |
-
-
-    #### **/login** _acesso à conta_
-    | **Rota**        | **Método** | **Chaves**            |
-    |-----------------|------------|-----------------------|
-    | api/auth/login  | POST       | Email; password       |
-
-    #### **/logout** _sair da conta_
-    | **Rota**        | **Método** | 
-    |-----------------|------------|
-    | api/auth/logout | POST       | 
-
-- ### Clientes
-    <br>
-    #### **/clients** _listagem de todos os clientes_
-    | Rota | Método |
-    |---|---|
-    | /auth/clients | POST |
+### Clientes
+___
+> post: **/clients**
+>
+Listagem de todos/as os/as clientes cadastrados, contendo apenas dados principais. 
+> post: **/client/new**
+> 
+Cadastro de novos/as clientes;
+> post: **/client/{id}**
+> 
+Visualizar dados completos do cliente, assim como vendas recentes. Possível filtrar as vendas por mês && ano.
+> put: **/client/edit/{id}**
+> 
+Editar dados de cliente já cadastrado.
+> post: **/client/delete/{id}**
+> 
+ Deletar dados de cliente cadastrado, incluindo endereço e vendas.
+ <br>
 
 ### Endereços
+___
+
+> post: **/adress/new**
+> 
+Cadastro novo endereço vinculado a cliente já existente.
+> put: **/adress/edit/{id}**
+> 
+Editar endereço de cliente já cadastrado.
+<br>
 
 ### Produtos
+___
+> post: **/products**
+>
+Listagem de todos os produtos cadastrados, contendo apenas dados principais.
 
-### Vendas
+> post: **/products/new**
+> 
+Cadastro de novos produtos;
+> post: **/products/{id}**
+> 
+Visualizar informações completas do produto cadastrado.
+> put: **/products/edit/{id}**
+> 
+Editar informações de produto já cadastrado.
+> put: **/products/erase/{id}**
+> 
+Deletar (*soft delete*) produto cadastrado.
+> put: **/products/restore/{id}**
+> 
+Restaurar produto que foi deletado com *soft delete*.
+> post: **/products/delete/{id}**
+> 
+ Deletar definitivamente produto cadastrado.
+ <br>
+ ### Vendas
+___
+
+> post: **/sales/new**
+> 
+Cadastro de nova venda de um produto a um cliente.
+<br>
 
 
 ## Dificuldades encontradas
