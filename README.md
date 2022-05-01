@@ -128,22 +128,22 @@ ___
 >
 Listagem de todos os produtos cadastrados ordenados alfabeticamente, contendo apenas dados principais.
 
-> post: **/products/new**
+> post: **/product/new**
 > 
 Cadastro de novos produtos (livros).
-> post: **/products/{id}**
+> post: **/product/{id}**
 > 
 Visualizar informações completas do produto cadastrado.
-> put: **/products/edit/{id}**
+> put: **/product/edit/{id}**
 > 
 Editar informações de produto já cadastrado.
-> put: **/products/erase/{id}**
+> put: **/product/erase/{id}**
 > 
 Exclusão lógica (*soft delete*) de produto cadastrado.
-> put: **/products/restore/{id}**
+> put: **/product/restore/{id}**
 > 
 Restaurar produto que foi deletado com *soft delete*.
-> post: **/products/delete/{id}**
+> post: **/product/delete/{id}**
 > 
  Deletar definitivamente produto cadastrado.
 
@@ -160,7 +160,7 @@ Restaurar produto que foi deletado com *soft delete*.
  ### Vendas
 ___
 
-> post: **/sales/new**
+> post: **/sale/new**
 > 
 Cadastro de nova venda de um produto a um cliente. Colunas de preço e preço total são preenchidos automaticamente a partir do *product_id*.
 | **Rota** | **Método** | **Chaves** |
