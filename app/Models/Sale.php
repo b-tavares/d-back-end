@@ -10,20 +10,18 @@ class Sale extends Model
     use HasFactory;
 
     protected $fillable = [
-        'client',
-        'product',
+        'client_id',
+        'product_id',
         'quantity',
-        'total_price',
-        'sale_date',
     ];
 
     public function client()
     {
-        return $this->belongsTo('App\Client', 'foreign_key');
+        return $this->belongsTo('App\Models\Client', 'client_id');
     }
 
     public function product()
     {
-        return $this->belongsTo('App\Product', 'foreign_key');
+        return $this->belongsTo('App\Models\Product', 'client_id');//ou id?
     }
 }

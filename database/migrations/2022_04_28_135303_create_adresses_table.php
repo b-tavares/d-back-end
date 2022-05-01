@@ -25,7 +25,7 @@ class CreateAdressesTable extends Migration
             $table->timestamps();
 
             $table->unsignedBigInteger('client_id');          
-            $table->foreign('client_id')->references('id')->on('clients');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade')->onUpdate('cascade');
         });
     }   
 

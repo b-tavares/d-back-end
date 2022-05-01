@@ -16,18 +16,14 @@ class CreateSalesTable extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('client');
-            $table->string('product');
+            $table->unsignedBigInteger('client_id');          
+            $table->unsignedBigInteger('product_id');          
             $table->integer('quantity');
             $table->integer('price');
             $table->integer('total_price');
-            $table->string('sale_date');
 
-            $table->unsignedBigInteger('client_id');          
-            $table->foreign('client_id')->references('id')->on('clients');
-
-            $table->unsignedBigInteger('product_id');          
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

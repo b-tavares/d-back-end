@@ -4,10 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
     use HasFactory;
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
 
     protected $fillable = [
         'name',
@@ -22,6 +26,6 @@ class Product extends Model
 
     public function sale()
     {
-        return $this->hasOne('App\Sale', 'foreign_key');
+        return $this->hasOne('App\Models\Sale', 'client_id');
     }
 }

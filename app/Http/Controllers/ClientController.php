@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\Sale;
+//use App\Models\Adress;
+use Illuminate\Support\Facades\DB;
 
 class ClientController extends Controller
 {
     public function index()
     {
-        $clients = Client::all();
+        $clients = Client::orderBy('id')->get();
+        
         return response()->json($clients);
     }
     
@@ -18,7 +22,7 @@ class ClientController extends Controller
         try{
             $client = new Client;
 
-            $client->name = $request->name;
+            $client->name = $request->name;//tentar colocar igual ao de uodate com ' ' e =>
             $client->cpf = $request->cpf;
             $client->phone = $request->phone;
             $client->email = $request->email;
@@ -32,14 +36,23 @@ class ClientController extends Controller
         } 
     }
 
-    public function show(Client $id) 
+    public function show($id) 
     {
-        //tem que mostrar as vendas pra o cliente, ordenando e filtrando por mes + ano
-        //$clients = Client::all();
-        //$client = $clients->find($id); se der errado mais tarde, ta aí o outro código.
-        $client = Client::find($id);
+        $client = Client::with('adress')->where('id', $id)->get();
 
-        return response()->json($client);
+        if($request->filled('year', 'month')) 
+        {
+            $salesFilter = Sale::where('client_id', $id)
+            ->whereYear('created_at', $request->year)
+            ->whereMonth('created_at', $request->month)
+            ->get(); 
+
+            return response()->json([$client, $salesFilter]);
+        } else {
+            $sales = Sale::where('client_id', $id)->get();
+        
+        return response()->json([$client, $sales]);
+        }
     }
 
     public function update(Request $request, $id)
@@ -59,7 +72,6 @@ class ClientController extends Controller
     }
 
     public function destroy($id) 
-    //tem que excluir também as vendas para o cliente.
     {
         try {
             $client = Client::find($id)->delete();

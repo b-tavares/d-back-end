@@ -20,6 +20,6 @@ class Adress extends Model
 
     public function client()
     {
-        return $this->belongsTo('App\Client', 'foreign_key');
+        return $this->belongsTo('App\Models\Client', 'client_id');
     }
 }

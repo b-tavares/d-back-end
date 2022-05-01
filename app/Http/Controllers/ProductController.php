@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 
 class ProductController extends Controller
-{
+{   
     public function index(){
-        $products = Product::all();
+
+        $products = Product::orderBy('author')->get(['name', 'author', 'quantity', 'sku']);
         return response()->json($products);
     }
 
@@ -43,7 +44,7 @@ class ProductController extends Controller
     public function update(Request $request, $id){
         {
             try{
-                $client = Product::find($id)->update([
+                $product = Product::find($id)->update([
                     'name' => $request->name,
                     'author' => $request->author,
                     'publisher' => $request->publisher,
@@ -62,10 +63,6 @@ class ProductController extends Controller
         }
     }
 
-    public function delete($id){
-        //SOFT DELETE!
-    }
-
     public function destroy($id){
         try {
             $product = Product::find($id)->delete();
@@ -76,4 +73,27 @@ class ProductController extends Controller
             return response()->json(['message' => 'Delete error']);
         }  
     }
+
+    public function restore($id)
+    {
+        try {
+            $product = Product::withTrashed()->find($id)->restore();
+
+            return response()->json(['message' => 'Successfully restored']);
+        } catch (Exception $e){
+
+            return response()->json(['message' => 'Restore error']);
+        }  
+    }
+
+    public function forceDelete($id){
+        try {
+            $product = Product::withTrashed()->find($id)->forceDelete();
+
+            return response()->json(['message' => 'Successfully deleted']);
+        } catch (Exception $e){
+
+            return response()->json(['message' => 'Delete error']);
+        }  
+    }    
 }

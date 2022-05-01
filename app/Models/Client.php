@@ -18,11 +18,11 @@ class Client extends Model
 
     public function adress()
     {
-        return $this->hasOne('App\Adress', 'foreign_key');
+        return $this->hasOne('App\Models\Adress', 'client_id');
     }
 
     public function sale()
     {
-        return $this->hasMany('App\Sale', 'foreign_key');
+        return $this->hasMany('App\Models\Sale', 'client_id')->orderBy('created_at', 'DESC');
     }
 }

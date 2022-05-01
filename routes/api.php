@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\AdressController;
 
 Route::group([
     'middleware' => 'jwt.verify',
@@ -28,4 +29,15 @@ Route::post('products', [ProductController::class, 'index']);
 Route::post('product/new', [ProductController::class, 'store']);
 Route::post('product/{id}', [ProductController::class, 'show']);
 Route::put('product/edit/{id}', [ProductController::class, 'update']);
-Route::post('product/delete/{id}', [ProductController::class, 'destroy']);
+Route::post('product/erase/{id}', [ProductController::class, 'destroy']);
+Route::post('product/restore/{id}', [ProductController::class, 'restore']);
+Route::post('product/delete/{id}', [ProductController::class, 'forceDelete']);
+
+//Route::post('sales', [SaleController::class, 'index']);
+Route::post('sale', [SaleController::class, 'store']);
+//Route::post('sale/{id}', [SaleController::class, 'show']);
+
+//Route::post('adresses', [AdressController::class, 'index']);
+Route::post('adress/new', [AdressController::class, 'store']);
+//Route::post('adress/{id}', [AdressController::class, 'show']);
+Route::put('adress/edit/{id}', [AdressController::class, 'update']);
