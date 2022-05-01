@@ -65,8 +65,17 @@ php artisan serve
 
 ### Usuários
 
-    #### SignUp: Criação de conta
+#### SignUp: criação de conta
+| **Rota**        | **Método** | **Chaves** |   |   |
+|-----------------|------------|------------|---|---|
+| api/auth/signup | POST       | Name       |   |   |
+|                 |            | Email      |   |   |
+|                 |            | Password   |   |   |
 
+
+#### LogIn: acesso à conta
+
+### LogOut: sair da conta
 
 
 ### Clientes
