@@ -1,5 +1,5 @@
 # Programa de Gestão de Vendas (Sales Manager Program) 
-O projeto consiste em estruturar uma API RESTful e um banco de dados ligado a mesma. Trata-se de um sistema que permite cadastrar usuários externamente e, ao realizarem login, poderão registrar clientes, produtos e vendas. A linguagem escolhida foi PHP (Laravel).
+O projeto consiste em estruturar uma API RESTful e um banco de dados ligado a mesma. Trata-se de um sistema que permite cadastrar usuários externamente e, ao realizarem login, poderão registrar clientes, produtos e vendas. O fluxo de autenticação deve ser baseado em JWT. A linguagem escolhida foi PHP (Laravel).
 
 ## Requisitos
 
