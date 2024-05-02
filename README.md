@@ -1,5 +1,5 @@
-# Desafio Back-end
-O desafio consiste em estruturar uma API RESTful e um banco de dados ligado a mesma. Trata-se de um sistema que permite cadastrar usuários externamente e, ao realizarem login, poderão registrar clientes, produtos e vendas. A linguagem escolhida foi PHP (Laravel).
+# Programa de Gestão de Vendas (Sales Manager Program) 
+O projeto consiste em estruturar uma API RESTful e um banco de dados ligado a mesma. Trata-se de um sistema que permite cadastrar usuários externamente e, ao realizarem login, poderão registrar clientes, produtos e vendas. A linguagem escolhida foi PHP (Laravel).
 
 ## Requisitos
 
@@ -168,5 +168,5 @@ Cadastro de nova venda de um produto a um cliente. Colunas de preço e preço to
 | auth/sale/new | POST | client_id; product_id; quantity. |
 
 ## Dificuldades encontradas
-- Configuração JWT para autenticação e middleware. Resolvido através da [(documentação)](https://jwt-auth.readthedocs.io/en/develop/quick-start/) e pesquisa em fóruns.
+- Configuração JWT para autenticação e middleware. Resolvido através da [documentação](https://jwt-auth.readthedocs.io/en/develop/quick-start/) e pesquisa em fóruns.
 - Filtro de pesquisa por data e hora de vendas, dentro da visualização individual do cliente. Resolvido através da documentação do [Laravel](https://laravel.com/docs/7.x/queries#where-clauses) e [Eloquent](https://laravel-docs-pt-br.readthedocs.io/en/latest/eloquent/#escopo-de-queryconsulta).
